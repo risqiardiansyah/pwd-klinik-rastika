@@ -1,0 +1,17 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Trigger Netlify URL
+      env:
+        WEBHOOK_URL: https://api.netlify.com/build_hooks/653d4651a846545a0bf087e3
+      run: |
+        curl -X POST -d '{}' $WEBHOOK_URL
